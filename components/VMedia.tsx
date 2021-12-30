@@ -4,7 +4,6 @@ import Poster from "./Poster";
 import Votes from "./Votes";
 
 const Movie = styled.View`
-  margin-right: 20px;
   align-items: center;
 `;
 
@@ -25,8 +24,8 @@ const VMedia: React.FC<VMediaProps> = ({ posterPath, originalTitle, voteAverage 
   <Movie>
     <Poster path={posterPath} />
     <Title>
-      {originalTitle.slice(0, 13)}
-      {originalTitle.length > 13 ? "..." : null}
+      {originalTitle.slice(0, 12)}
+      {originalTitle.length > 12 ? "..." : null}
     </Title>
     <Votes votes={voteAverage} />
   </Movie>

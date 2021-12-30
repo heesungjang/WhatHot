@@ -1,10 +1,11 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Dimensions, RefreshControl, RefreshControlBase } from "react-native";
+import { ActivityIndicator, Dimensions, FlatList, RefreshControl, Text, View } from "react-native";
 import Swiper from "react-native-swiper";
 import styled from "styled-components/native";
 import Poster from "../components/Poster";
 import Slide from "../components/Slide";
+import VMedia from "../components/VMedia";
 
 const API_KEY = "10923b261ba94d897ac6b81148314a3f";
 
@@ -25,7 +26,7 @@ const ListTitle = styled.Text`
   margin-left: 30px;
 `;
 
-const TrendingScroll = styled.ScrollView`
+const TrendingScroll = styled.FlatList`
   margin-top: 20px;
 `;
 
@@ -144,18 +145,16 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
       </Swiper>
       <ListContainer>
         <ListTitle>Trending Movies</ListTitle>
-        <TrendingScroll contentContainerStyle={{ paddingLeft: 30 }} horizontal showsHorizontalScrollIndicator={false}>
-          {trending.map((movie) => (
-            <Movie key={movie.id}>
-              <Poster path={movie.poster_path} />
-              <Title>
-                {movie.original_title.slice(0, 13)}
-                {movie.original_title.length > 13 ? "..." : null}
-              </Title>
-              <Votes>{movie.vote_average > 0 ? `⭐️ ${movie.vote_average}/10` : `Coming soon`}</Votes>
-            </Movie>
-          ))}
-        </TrendingScroll>
+        <TrendingScroll
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 30 }}
+          ItemSeparatorComponent={() => <View style={{ width: 30 }} />}
+          data={trending}
+          renderItem={({ item }) => (
+            <VMedia posterPath={item.poster_path} originalTitle={item.original_title} voteAverage={item.vote_average} />
+          )}
+        />
       </ListContainer>
       <ComingSoonTitle>Coming soon</ComingSoonTitle>
       {upcoming.map((movie) => (

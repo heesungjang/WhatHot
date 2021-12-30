@@ -42,22 +42,12 @@ interface HMediaProps {
   voteAverage?: number;
 }
 
-const HMedia: React.FC<HMediaProps> = ({
-  posterPath,
-  originalTitle,
-  overview,
-  releaseDate,
-  voteAverage,
-}) => {
+const HMedia: React.FC<HMediaProps> = ({ posterPath, originalTitle, overview, releaseDate, voteAverage }) => {
   return (
     <HMovie>
       <Poster path={posterPath} />
       <HColumn>
-        <Title>
-          {originalTitle.length > 30
-            ? `${originalTitle.slice(0, 30)}...`
-            : originalTitle}
-        </Title>
+        <Title>{originalTitle.length > 30 ? `${originalTitle.slice(0, 30)}...` : originalTitle}</Title>
         {releaseDate ? (
           <Release>
             {new Date(releaseDate).toLocaleDateString("ko", {
@@ -68,11 +58,7 @@ const HMedia: React.FC<HMediaProps> = ({
           </Release>
         ) : null}
         {voteAverage ? <Votes votes={voteAverage} /> : null}
-        <Overview>
-          {overview !== "" && overview.length > 140
-            ? `${overview.slice(0, 140)}...`
-            : overview}
-        </Overview>
+        <Overview>{overview !== "" && overview.length > 140 ? `${overview.slice(0, 140)}...` : overview}</Overview>
       </HColumn>
     </HMovie>
   );
