@@ -29,7 +29,10 @@ const Slide: React.FC<ISlideProps> = ({ backdropPath, posterPath, originalTitle,
           <Column>
             <Title isDark={isDark}>{originalTitle}</Title>
             {voteAverage > 0 ? <Votes isDark={isDark}>⭐️{voteAverage}/10</Votes> : null}
-            <Overview isDark={isDark}>{overview.slice(0, 90)}...</Overview>
+            <Overview isDark={isDark}>
+              {overview.slice(0, 90)}
+              {overview.length > 90 ? "..." : null}
+            </Overview>
           </Column>
         </Wrapper>
       </BlurView>
