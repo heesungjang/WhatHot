@@ -3,9 +3,8 @@
     "name": "movie-app",
     "slug": "movie-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "userInterfaceStyle": "automatic"
   },
   "name": "movie-app"
 }
