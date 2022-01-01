@@ -4,6 +4,7 @@ import React from "react";
 import { View, Text, FlatList, ScrollView } from "react-native";
 import { useQuery } from "react-query";
 import { tvApi } from "../api";
+import HList, { HListSeparator } from "../components/HList";
 import { Loader } from "../components/Loader";
 import VMedia from "../components/VMedia";
 
@@ -28,43 +29,10 @@ const Tv: React.FC = () => {
   }
 
   return (
-    <ScrollView>
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={airingTodayData.results}
-        renderItem={({ item }) => (
-          <VMedia
-            posterPath={item.poster_path}
-            originalTitle={item.original_name}
-            voteAverage={item.vote_average}
-          />
-        )}
-      />
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={topRatedData.results}
-        renderItem={({ item }) => (
-          <VMedia
-            posterPath={item.poster_path}
-            originalTitle={item.original_name}
-            voteAverage={item.vote_average}
-          />
-        )}
-      />
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={trendingData.results}
-        renderItem={({ item }) => (
-          <VMedia
-            posterPath={item.poster_path}
-            originalTitle={item.original_name}
-            voteAverage={item.vote_average}
-          />
-        )}
-      />
+    <ScrollView contentContainerStyle={{ paddingVertical: 30 }}>
+      <HList title="Trending TV" data={trendingData.results} />
+      <HList title="Airing Today" data={airingTodayData.results} />
+      <HList title="Top Rated TV" data={topRatedData.results} />
     </ScrollView>
   );
 };
