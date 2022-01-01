@@ -19,6 +19,7 @@ const Tabs = () => {
       sceneContainerStyle={{ backgroundColor: isDark ? BLACK_COLOR : "white" }}
       initialRouteName="Movies"
       screenOptions={{
+        unmountOnBlur: true,
         tabBarStyle: {
           backgroundColor: isDark ? BLACK_COLOR : "white",
         },
