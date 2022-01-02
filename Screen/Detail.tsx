@@ -1,7 +1,16 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { useEffect } from "react";
-import { Dimensions, StyleSheet, Text, View, Linking } from "react-native";
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  Linking,
+  TouchableOpacity,
+  Share,
+  Platform,
+} from "react-native";
 
 import styled from "styled-components/native";
 import { Movie, moviesApi, TV, tvApi } from "../api";
@@ -75,12 +84,35 @@ const Detail: React.FC<DetailScreenProps> = ({ navigation: { setOptions }, route
     [isMovie ? "movies" : "tv", params.id],
     isMovie ? moviesApi.detail : tvApi.detail
   );
+  const shareMedia = async () => {
+    const isAndroid = Platform.OS === "android";
+    if (isAndroid) {
+    }
+    await Share.share({
+      url: isMovie ? `https://www.imdb.com/title/${data?.imdb_id}/` : data?.homepage,
+      message: params.overview,
+      title: isMovie ? params.original_title : params.original_name,
+    });
+  };
+  const ShareButton = () => (
+    <TouchableOpacity onPress={shareMedia}>
+      <Ionicons name="share-outline" color="white" size={24} />
+    </TouchableOpacity>
+  );
 
   useEffect(() => {
     setOptions({
       title: "original_title" in params ? "Movie" : "TV Show",
     });
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      setOptions({
+        headerRight: () => <ShareButton />,
+      });
+    }
+  }, [data]);
 
   const openYLink = async (videoId: string) => {
     const baseUrl = `http://m.youtube.com/watch?v=${videoId}`;
