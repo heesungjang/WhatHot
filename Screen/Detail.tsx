@@ -55,7 +55,7 @@ const BtnText = styled.Text`
   color: white;
   font-weight: 600;
   margin-bottom: 10px;
-  line-height: 24;
+  line-height: 24px;
   margin-left: 10px;
 `;
 
