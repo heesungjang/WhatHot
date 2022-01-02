@@ -2,6 +2,7 @@ import React from "react";
 import { FlatList } from "react-native";
 
 import styled from "styled-components/native";
+import { Movie } from "../api";
 import VMedia from "./VMedia";
 
 interface HListProps {
@@ -41,6 +42,7 @@ const HList: React.FC<HListProps> = ({ title, data }) => {
             posterPath={item.poster_path}
             originalTitle={item.original_title ?? item.original_name}
             voteAverage={item.vote_average}
+            fullData={item}
           />
         )}
       />
