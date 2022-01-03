@@ -83,3 +83,9 @@ const { isLoading: trendingLoading, data: trendingData } = useQuery(
     moviesApi.trending
   );
 ```
+
+
+### Landing page
+https://user-images.githubusercontent.com/68782077/147947081-f47c4ded-75b9-4527-b90b-6ef0672d21af.mp4
+
+
