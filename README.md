@@ -88,4 +88,11 @@ const { isLoading: trendingLoading, data: trendingData } = useQuery(
 ### Landing page
 https://user-images.githubusercontent.com/68782077/147947081-f47c4ded-75b9-4527-b90b-6ef0672d21af.mp4
 
+### TV show section
+https://user-images.githubusercontent.com/68782077/147947360-c6a0655c-ed0f-44af-98a7-a18e02e4b74a.mp4
+
+### Search page
+https://user-images.githubusercontent.com/68782077/147947503-9e74e6ad-c890-4b87-aa3a-847fbc0b9970.mp4
+
+
 
