@@ -18,7 +18,7 @@ npm run ios
 
 - **Styled-components** for styling.
 
-- **React-Navigation**: to navigate between components, i used react-navigation library.
+- **React-Navigation**: to navigate between components.
 
 - **React-Query**: for state management and data fetching, i used react-query. Handling asynchronous http request with react-query made my code not only effective but easy to read.
 
