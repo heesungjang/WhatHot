@@ -1,6 +1,6 @@
 # WhatHot
 
-**Whathot** is an mobile application built with react-native and thus, supported for both android and ios environment.
+**Whathot** is an mobile application built with react-native.
 
 
 Installation && run
